@@ -1,0 +1,53 @@
+---
+title: Blikson Link
+description: A proxy layer that unifies and standardizes integration with multiple shipping provider APIs, simplifying development and reducing operational complexity.
+date: "2025-05-01"
+published: true
+repository: trikooo/blikson-link
+---
+
+# Blikson Link – Unified Delivery API Gateway
+
+## Overview
+
+Blikson Link is a high-performance API gateway that provides a single, standardized interface for multiple Algerian delivery providers (EcoTrack, Yalidine, Noest, etc.). It acts as a proxy layer that normalizes requests and responses, allowing developers to integrate once and connect with multiple shipping services through a consistent API.
+
+## Key Features
+
+* **Multi-Provider Integration**: Unified API for multiple logistics companies
+* **High Performance**: Bun runtime + Hono framework for fast, lightweight request handling
+* **Type Safety**: Full TypeScript with Zod runtime validation
+* **Error Handling & Observability**: Structured logging (Pino), Sentry monitoring, and request tracing
+* **Scalable Architecture**: Modular design for easy addition of new providers
+* **Developer Experience**: Auto-generated OpenAPI/Swagger docs with Scalar UI
+* **Production Ready**: Dockerized with Fly.io deployment configuration
+
+## Architecture
+
+* **Gateway Layer**: Central entry point for client apps
+* **Validation Middleware**: Ensures request correctness and company/action resolution
+* **Dynamic Module Loading**: Provider actions loaded at runtime for flexibility
+* **Response Normalization**: Standard format across all providers for reliability
+* **Monitoring & Security**: Structured logs, error sanitization, strict env validation
+
+```
+Client App ─▶ Blikson Link (API Gateway) ─▶ Provider APIs
+```
+
+## Technology Stack
+
+* **Runtime**: Bun
+* **Framework**: Hono
+* **Language**: TypeScript
+* **Validation**: Zod
+* **Logging & Monitoring**: Pino, Sentry
+* **Docs**: OpenAPI + Scalar UI
+* **Deployment**: Docker, Fly.io
+
+## Impact
+
+* **Simplified Development**: Integrate once, connect to many providers
+* **Reduced Operational Overhead**: Consistent error handling and request/response format
+* **Future-Proofing**: Easily extensible to new logistics partners
+* **Enterprise-Ready**: Strong performance, observability, and deployment strategy
+

@@ -1,0 +1,48 @@
+---
+title: Lork
+description: A custom Node.js framework featuring hand-crafted HTTP protocol handling, session management, and authentication systems.
+date: "2024-03-01"
+published: true
+repository: trikooo/lork
+---
+
+![Lork server creation](/lork/1.png)
+![Lork session management](/lork/2.png)
+![Lork local authentication](/lork/3.png)
+
+## Overview
+
+I developed Lork, a lightweight Node.js framework built from the ground up with a focus on understanding and implementing core web server functionalities. Instead of relying on third-party libraries, I chose to implement critical components from scratch, including raw HTTP protocol handling, multipart form data parsing, cookie management, and session handling.
+
+## Key Features
+
+- **Custom HTTP Protocol Implementation**: Built a robust HTTP request parser handling various content types, including multipart form data, without external dependencies.
+- **Session Management System**: Developed a flexible session handling system with support for both memory stores and custom storage solutions.
+- **Authentication Framework**: Implemented a first-party local authentication system with secure password handling and session management.
+- **Cookie Parser**: Created a custom cookie parser and manager supporting both signed and unsigned cookies.
+- **Middleware Architecture**: Designed an extensible middleware system allowing seamless integration of custom functionality.
+
+## Technologies Used
+
+- **Node.js**: Core platform for building the framework
+- **JavaScript**: Primary programming language
+- **HTTP Module**: Native Node.js module for handling HTTP requests
+- **Crypto**: For implementing secure cookie signing and authentication
+
+## Technical Challenges
+
+- **Multipart Form Data Parsing**: Created a custom parser for handling multipart form data, which is a crucial feature for processing file uploads and other complex form submissions. Although this feature was not included in the final release of Lork, its development provided valuable insights into the intricacies of HTTP protocol handling and the challenges of parsing complex data formats.
+- **Session Security**: Created a session security system that signs the session ID with a secret key stored in an HTTP-only cookie, preventing JavaScript access and mitigating XSS attacks. The session cookie is HTTPS-only, and protected against CSRF attacks. Sessions are stored in-memory or MongoDB, with automatic cleanup of expired sessions. Changes to session data are automatically updated in the store through a proxy, ensuring secure and consistent session management.
+- **Routing and middleware Design**: Created a flexible routing system that maps HTTP requests to appropriate handler functions based on the request method and URL. The routing system supports dynamic route parameters, enabling the creation of clean and modular URLs. In addition, I developed a custom middleware architecture that allows for easy integration of pre-processing steps, such as authentication checks, logging, and request validation, before the request reaches the handler. Middleware functions are executed in a defined order, allowing fine-grained control over the request lifecycle. This modular approach helps to keep the application code clean and maintainable.
+- **Authentication**: Implemented a first-party local authentication system that securely handles user login via email and password. Passwords are hashed using a custom salt and hash function to protect against brute-force and rainbow table attacks. Upon successful authentication, a session token is issued and stored in an HTTP-only cookie, ensuring security against XSS attacks. The login flow redirects users to a protected route after successful authentication, and session management is maintained via token-based cookies.
+
+## Learnings
+
+- Gained deep understanding of HTTP protocols and web server architecture
+- Mastered raw request/response handling and data parsing
+- Developed expertise in security considerations for web frameworks
+- Learned the importance of balancing flexibility with simplicity in API design
+
+## Outcome
+
+Lork has become a lightweight framework that focuses on core web framework functionality without the overhead of larger frameworks. The project demonstrates my ability to implement complex systems from scratch and my understanding of web server architecture.

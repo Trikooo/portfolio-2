@@ -7,22 +7,27 @@ import { Article } from "./article";
 import { Redis } from "@upstash/redis";
 import { Eye } from "lucide-react";
 
-const redis = Redis.fromEnv();
+const redis = process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
+  ? Redis.fromEnv()
+  : null;
 
 export const revalidate = 60;
 export default async function ProjectsPage() {
-  const views = (
-    await redis.mget<number[]>(
-      ...allProjects.map((p) => ["pageviews", "projects", p.slug].join(":")),
-    )
-  ).reduce((acc, v, i) => {
-    acc[allProjects[i].slug] = v ?? 0;
-    return acc;
-  }, {} as Record<string, number>);
+  const views = redis
+    ? (await redis.mget<number[]>(
+        ...allProjects.map((p) => ["pageviews", "projects", p.slug].join(":")),
+      )).reduce((acc, v, i) => {
+        acc[allProjects[i].slug] = v ?? 0;
+        return acc;
+      }, {} as Record<string, number>)
+    : allProjects.reduce((acc, p) => {
+        acc[p.slug] = 0;
+        return acc;
+      }, {} as Record<string, number>);
 
-  const featured = allProjects.find((project) => project.slug === "unkey")!;
-  const top2 = allProjects.find((project) => project.slug === "planetfall")!;
-  const top3 = allProjects.find((project) => project.slug === "highstorm")!;
+  const featured = allProjects.find((project) => project.slug === "kotek")!;
+  const top2 = allProjects.find((project) => project.slug === "lork")!;
+  const top3 = allProjects.find((project) => project.slug === "blikson-link")!;
   const sorted = allProjects
     .filter((p) => p.published)
     .filter(

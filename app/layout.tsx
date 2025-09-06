@@ -1,24 +1,24 @@
 import "../global.css";
-import { Inter } from "@next/font/google";
-import LocalFont from "@next/font/local";
+import { Inter } from "next/font/google";
+import LocalFont from "next/font/local";
 import { Metadata } from "next";
 import { Analytics } from "./components/analytics";
 
 export const metadata: Metadata = {
   title: {
-    default: "chronark.com",
-    template: "%s | chronark.com",
+    default: "Yacine Zendaoui",
+    template: "%s | yacinezendaoui.com",
   },
-  description: "Co-founder of unkey.dev and founder of planetfall.io",
+  description: "Web Developer & Architect - Building modern, user-centric applications with cutting-edge frameworks",
   openGraph: {
-    title: "chronark.com",
+    title: "yacinezendaoui.com",
     description:
-      "Co-founder of unkey.dev and founder of planetfall.io",
-    url: "https://chronark.com",
-    siteName: "chronark.com",
+      "Web Developer & Architect - Building modern, user-centric applications with cutting-edge frameworks",
+    url: "https://yacinezendaoui.com",
+    siteName: "yacinezendaoui.com",
     images: [
       {
-        url: "https://chronark.com/og.png",
+        url: "https://yacinezendaoui.com/og.png",
         width: 1920,
         height: 1080,
       },
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: "Chronark",
+    title: "Yacine Zendaoui",
     card: "summary_large_image",
   },
   icons: {
