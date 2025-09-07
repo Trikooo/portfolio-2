@@ -15,7 +15,7 @@ const socials = [
   },
   {
     icon: <Mail size={20} />,
-    href: "mailto:hello@yacinezendaoui.com",
+    href: "mailto:contact@yacinezendaoui.com",
     label: "Email",
     handle: "contact@yacinezendaoui.com",
   },
